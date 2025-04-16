@@ -7,119 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
-
-const allProducts = [
-  {
-    id: "food-basket",
-    name: "Essential Food Basket",
-    description: "A large basket filled with pantry essentials to keep a family fed for a week.",
-    longDescription: "This comprehensive food basket contains a week's worth of essential pantry items for a family of four. Includes rice, pasta, canned vegetables, canned fruits, soup, beans, cereal, oatmeal, and shelf-stable milk. All items are chosen to provide balanced nutrition during difficult times.",
-    price: 79.99,
-    image: "https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Food",
-    retailer: "Amazon",
-    inStock: true,
-  },
-  {
-    id: "winter-jacket",
-    name: "Winter Jacket",
-    description: "Stay warm with this insulated winter jacket, essential for cold weather.",
-    longDescription: "This durable winter jacket features a water-resistant outer shell and thick insulation to keep you warm in cold temperatures. Includes a hood, multiple pockets, and adjustable cuffs to keep out wind and snow. Available in multiple sizes for men, women, and children.",
-    price: 69.99,
-    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Clothing",
-    retailer: "Walmart",
-    inStock: true,
-  },
-  {
-    id: "bedding-set",
-    name: "Comforter Bedding Set",
-    description: "Cozy bedding set with sheets, pillowcases, and a warm comforter.",
-    longDescription: "Complete bedding set that includes a warm comforter, fitted sheet, flat sheet, and two pillowcases. Made with soft, hypoallergenic materials for comfort and durability. Available in twin, full, queen, and king sizes. Machine washable for easy care.",
-    price: 89.99,
-    image: "https://images.unsplash.com/photo-1629949009765-28a429ff37f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Household",
-    retailer: "Target",
-    inStock: true,
-  },
-  {
-    id: "gift-card",
-    name: "Grocery Gift Card",
-    description: "A gift card for purchasing groceries at major supermarkets.",
-    longDescription: "This grocery gift card can be used at major supermarket chains nationwide, allowing the recipient to purchase fresh food, pantry items, or other necessary groceries. Available in denominations of $25, $50, $75, and $100. An excellent way to provide flexible assistance.",
-    price: 50.00,
-    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Gift Cards",
-    retailer: "Multiple retailers",
-    inStock: true,
-  },
-  {
-    id: "toiletries-kit",
-    name: "Essential Toiletries Kit",
-    description: "Complete kit with shampoo, soap, toothpaste, and other personal care items.",
-    longDescription: "This comprehensive toiletries kit includes all the essentials for personal hygiene: shampoo, conditioner, body wash, soap, toothpaste, toothbrush, deodorant, lotion, and other basic care items. Perfect for those starting over or in temporary housing situations.",
-    price: 45.99,
-    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Personal Care",
-    retailer: "Amazon",
-    inStock: true,
-  },
-  {
-    id: "kitchen-set",
-    name: "Basic Kitchen Set",
-    description: "Essential pots, pans, and utensils for preparing meals.",
-    longDescription: "This kitchen starter set includes everything needed to prepare basic meals: a saucepan, frying pan, pot with lid, mixing bowl, measuring cups, utensils (spatula, spoon, ladle), and a set of dishes and cutlery for four people. Ideal for setting up a new kitchen.",
-    price: 129.99,
-    image: "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Household",
-    retailer: "Walmart",
-    inStock: true,
-  },
-  {
-    id: "blanket",
-    name: "Warm Fleece Blanket",
-    description: "Soft, warm blanket for cold nights.",
-    longDescription: "This soft, plush fleece blanket provides warmth and comfort. Measuring 60\" x 80\", it's large enough for a single bed or for use as an extra layer on larger beds. Machine washable and available in multiple colors. A simple but essential item for staying warm.",
-    price: 35.99,
-    image: "https://images.unsplash.com/photo-1600369672770-985fd30001c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Household",
-    retailer: "Target",
-    inStock: true,
-  },
-  {
-    id: "backpack",
-    name: "Multi-purpose Backpack",
-    description: "Durable backpack for everyday use or school.",
-    longDescription: "This versatile backpack features multiple compartments, including a padded laptop sleeve, water bottle pockets, and organizer sections for smaller items. Made from durable, water-resistant material with reinforced stitching. Perfect for school, work, or everyday use.",
-    price: 49.99,
-    image: "https://images.unsplash.com/photo-1622560480605-d83c661b4a12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Clothing",
-    retailer: "Amazon",
-    inStock: true,
-  },
-  {
-    id: "baby-essentials",
-    name: "Baby Essentials Kit",
-    description: "Diapers, wipes, formula, and other necessities for infants.",
-    longDescription: "This comprehensive baby essentials kit includes a supply of diapers in various sizes, baby wipes, baby shampoo, lotion, diaper rash cream, bottles, and formula. Provides the basics needed to care for an infant during a transitional or crisis period.",
-    price: 85.99,
-    image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Baby",
-    retailer: "Target",
-    inStock: true,
-  },
-  {
-    id: "school-supplies",
-    name: "School Supplies Bundle",
-    description: "Notebooks, pens, pencils, and other essential school items.",
-    longDescription: "This school supplies bundle contains everything a student needs for the classroom: notebooks, folders, pencils, pens, erasers, highlighters, ruler, scissors, and a pencil case. Appropriate for middle school and high school students, helping them be prepared for learning.",
-    price: 55.99,
-    image: "https://images.unsplash.com/photo-1588075592446-265bad1d861c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "Education",
-    retailer: "Walmart",
-    inStock: true,
-  },
-];
+import { allProducts } from "@/lib/products"; // Adjust the import path as necessary
 
 
 const getRelatedProducts = (currentId: string, category: string) => {
@@ -128,7 +16,9 @@ const getRelatedProducts = (currentId: string, category: string) => {
     .slice(0, 3);
 };
 
+
 const ProductDetailPage = () => {
+  // Get productId from URL params (not props)
   const { productId } = useParams<{ productId: string }>();
   const { toast } = useToast();
   const [product, setProduct] = useState<any>(null);
